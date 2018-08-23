@@ -1,6 +1,9 @@
-package dominio;
+package dominio.parte2.punto3;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+
+import utility_2.SottoCategoriaException;
 
 public class SottoCategoria extends Categoria implements Serializable
 {
@@ -17,15 +20,55 @@ public class SottoCategoria extends Categoria implements Serializable
     */
     public SottoCategoria(String ns)
     {
-    	    super();
-    	    this.nomeSottoC= ns;
-    	    inizializzaElencoRisorse();
+    	super();
+    	this.nomeSottoC= ns;
+    	inizializzaElencoRisorse();
     }
     
     public String getNome()
     {
-    	    return nomeSottoC;
+    	return nomeSottoC;
     }
+    
+    public int getNumeroMaxGiorniPrestito()
+  	{
+      	throw new SottoCategoriaException();
+  	}
+  	   
+  	public int getNumeroMaxGiorniProroga()
+  	{
+  		throw new SottoCategoriaException();   
+  	}
+  	
+  	public int getNumeroGiorniRichiestaProroga()
+  	{
+  	    throw new SottoCategoriaException();  
+  	}
+  	   
+  	public int getNumeroMaxRisorseInPrestito()
+  	{
+  		throw new SottoCategoriaException(); 
+  	}
+  	
+    public void inizializzaElencoSottoCategorie()
+    {
+  		throw new SottoCategoriaException(); 
+    }
+  	
+  	public ArrayList <SottoCategoria> getElencoSottoCategorie() 
+  	{
+  		throw new SottoCategoriaException();
+  	}
+      
+    public void aggiungiSottoCategoria(SottoCategoria sc)
+  	{
+      	throw new SottoCategoriaException();
+  	}
+      
+    public boolean verificaPresenza(String t)
+  	{
+      	throw new SottoCategoriaException();
+  	}
     
     /**
      * @pre: elencoRisorse != null

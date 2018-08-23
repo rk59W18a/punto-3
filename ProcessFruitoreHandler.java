@@ -1,4 +1,4 @@
-package interazione;
+package interazione.parte2.punto3;
 
 import java.io.Serializable;
 
@@ -6,26 +6,24 @@ import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.Period;
 
-import dominio.Categoria;
-import dominio.Risorsa;
-import dominio.SottoCategoria;
-import logica.AnagraficaFruitori;
-import logica.Archivio;
-import logica.ArchivioPrestiti;
-import logica.ArchivioStorico;
-import logica.Fruitore;
-import logica.Prestito;
-import logica.Utente;
-import utility.Costanti;
-import utility.InputDati;
+import dominio.parte2.punto3.Categoria;
+import dominio.parte2.punto3.Risorsa;
+import dominio.parte2.punto3.SottoCategoria;
+import logica.parte2.punto3.AnagraficaFruitori;
+import logica.parte2.punto3.Archivio;
+import logica.parte2.punto3.ArchivioPrestiti;
+import logica.parte2.punto3.ArchivioStorico;
+import logica.parte2.punto3.Fruitore;
+import logica.parte2.punto3.Prestito;
+import logica.parte2.punto3.Utente;
+import utility_2.Costanti;
+import utility_2.InputDati;
 
 public class ProcessFruitoreHandler extends ProcessHandler implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 	
 	private AnagraficaFruitori af;
-    private Archivio arc;
-    private ArchivioPrestiti ap;
     private ArchivioStorico as;
     
     /**
@@ -235,10 +233,10 @@ public class ProcessFruitoreHandler extends ProcessHandler implements Serializab
 	 */
 	public void visualizzaPrestitiInCorso(Fruitore f)
 	{
-		System.out.println(f.prestitiInCorso(ap));
+		System.out.println(f.prestitiInCorso(getArchivioPrestiti()));
 	}
 
-    /** 
+	/** 
      * @pre: (f != null) && (arc != null) && (ap != null) && (arc.getElencoCategorie().size != 0) && (as != null)
      */
     public void registraPrestito(Fruitore f) 
@@ -248,9 +246,9 @@ public class ProcessFruitoreHandler extends ProcessHandler implements Serializab
     	 Risorsa r = null;
     	 Prestito nuovo = null;
     	
-    	 System.out.printf(Costanti.CONTENUTO_ARC, arc.stampaElencoCategorie());
-    	 int num1 = InputDati.leggiIntero(Costanti.INS_NUMERO_CAT_PRESTITO, Costanti.NUM_MINIMO, (arc.getElencoCategorie()).size());
-    	 c = (arc.getElencoCategorie()).get(num1-Costanti.NUM_MINIMO);
+    	 System.out.printf(Costanti.CONTENUTO_ARC, getArchivio().stampaElencoCategorie());
+    	 int num1 = InputDati.leggiIntero(Costanti.INS_NUMERO_CAT_PRESTITO, Costanti.NUM_MINIMO, (getArchivio().getElencoCategorie()).size());
+    	 c = (getArchivio().getElencoCategorie()).get(num1-Costanti.NUM_MINIMO);
 
     	 if(c.getElencoSottoCategorie() == null)
     	 {
@@ -259,20 +257,20 @@ public class ProcessFruitoreHandler extends ProcessHandler implements Serializab
       	    	     System.out.printf(Costanti.CONTENUTO_CAT_RISORSA, c.getNome(), stampaElencoRisorse(c));
     	      	 
       	    	     if(InputDati.leggiUpperChar(Costanti.INS_PROCEDERE_PRESTITO, "SN") == 'S')
-   	    	     {
+   	    	         {
       	    	        int num = InputDati.leggiIntero(Costanti.INS_NUMERO_RISORSA_PRESTITO, Costanti.NUM_MINIMO, c.getElencoRisorse().size());
     	                r = c.getElencoRisorse().get(num-Costanti.NUM_MINIMO);
     	    	
-    	                if(ap.controlloDisponibilitaRisorsa(r) && ap.controlloPerUlteriorePrestito(c, f.getUsername()) && !(ap.verificaPresenza(r, f.getUsername())))
+    	                if(getArchivioPrestiti().controlloDisponibilitaRisorsa(r) && getArchivioPrestiti().controlloPerUlteriorePrestito(c, f.getUsername()) && !(getArchivioPrestiti().verificaPresenza(r, f.getUsername())))
   	   	                {
   	   		               nuovo = new Prestito(c, f, r);
-  	   		               f.registraNuovoPrestito(ap, nuovo);
+  	   		               f.registraNuovoPrestito(getArchivioPrestiti(), nuovo);
   	   		               as.getPrestitiStorici().aggiungiPrestito(nuovo);
   	    	               System.out.println(Costanti.OP_SUCCESSO);
   	   	                }
-  	   	                else if(!(ap.controlloDisponibilitaRisorsa(r)))
+  	   	                else if(!(getArchivioPrestiti().controlloDisponibilitaRisorsa(r)))
    	                          System.out.println(Costanti.OP_NO_SUCCESSO_PRESTITO_1);
-                       else if(!(ap.controlloPerUlteriorePrestito(c, f.getUsername())))
+                       else if(!(getArchivioPrestiti().controlloPerUlteriorePrestito(c, f.getUsername())))
  	                              System.out.println(Costanti.OP_NO_SUCCESSO_PRESTITO_2);
                        else  
                	              System.out.println(Costanti.OP_NO_SUCCESSO_PRESTITO_3);
@@ -300,16 +298,16 @@ public class ProcessFruitoreHandler extends ProcessHandler implements Serializab
 	              int num = InputDati.leggiIntero(Costanti.INS_NUMERO_RISORSA_PRESTITO, Costanti.NUM_MINIMO, sc.getElencoRisorse().size());
 	       	      r = sc.getElencoRisorse().get(num-Costanti.NUM_MINIMO);
            
-	       	      if(ap.controlloDisponibilitaRisorsa(r) && ap.controlloPerUlteriorePrestito(c, f.getUsername()) && !(ap.verificaPresenza(r, f.getUsername())))
+	       	      if(getArchivioPrestiti().controlloDisponibilitaRisorsa(r) && getArchivioPrestiti().controlloPerUlteriorePrestito(c, f.getUsername()) && !(getArchivioPrestiti().verificaPresenza(r, f.getUsername())))
 	              {
   	   		         nuovo = new Prestito(c, f, r);
-  	   		         f.registraNuovoPrestito(ap, nuovo);
+  	   		         f.registraNuovoPrestito(getArchivioPrestiti(), nuovo);
   	   		         as.getPrestitiStorici().aggiungiPrestito(nuovo);
 	      	         System.out.println(Costanti.OP_SUCCESSO);
 	              }
-	              else if(!(ap.controlloDisponibilitaRisorsa(r)))
+	              else if(!(getArchivioPrestiti().controlloDisponibilitaRisorsa(r)))
 	      	                System.out.println(Costanti.OP_NO_SUCCESSO_PRESTITO_1);
-	              else if(!(ap.controlloPerUlteriorePrestito(c, f.getUsername())))
+	              else if(!(getArchivioPrestiti().controlloPerUlteriorePrestito(c, f.getUsername())))
 	    	                System.out.println(Costanti.OP_NO_SUCCESSO_PRESTITO_2);
 	              else
 	            	        System.out.println(Costanti.OP_NO_SUCCESSO_PRESTITO_3);
@@ -325,14 +323,14 @@ public class ProcessFruitoreHandler extends ProcessHandler implements Serializab
      */
     public void richiediProroga(Fruitore f) 
     { 
-   	    if(ap.getPrestiti(f.getUsername()).size() != Costanti.VUOTO)
+   	    if(getArchivioPrestiti().getPrestiti(f.getUsername()).size() != Costanti.VUOTO)
    	    {
-   	       System.out.println(f.prestitiInCorso(ap));
+   	       System.out.println(f.prestitiInCorso(getArchivioPrestiti()));
    	
    	       if(InputDati.leggiUpperChar(Costanti.INS_PROCEDERE_PROROGA, "SN") == 'S')
    	       {
-   	          int num = InputDati.leggiIntero(Costanti.INS_NUMERO_PRESTITO_PROROGA, Costanti.NUM_MINIMO, ap.getPrestiti(f.getUsername()).size());
-   	          Prestito pr = ap.getPrestiti(f.getUsername()).get(num-Costanti.NUM_MINIMO);
+   	          int num = InputDati.leggiIntero(Costanti.INS_NUMERO_PRESTITO_PROROGA, Costanti.NUM_MINIMO, getArchivioPrestiti().getPrestiti(f.getUsername()).size());
+   	          Prestito pr = getArchivioPrestiti().getPrestiti(f.getUsername()).get(num-Costanti.NUM_MINIMO);
    	      
    	          if(f.registraProrogaPrestito(pr))
    	          {
@@ -354,7 +352,7 @@ public class ProcessFruitoreHandler extends ProcessHandler implements Serializab
     public void controlloScadenzeAutomatiche()
     {
  	    af.decadenzaFruitore(as);
-        ap.scadenzaPrestito();
+        getArchivioPrestiti().scadenzaPrestito();
     }
     
 }

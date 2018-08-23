@@ -1,22 +1,22 @@
-package interazione;
+package interazione.parte2.punto3;
 
 import java.io.Serializable;
 
 import java.time.LocalDate;
 
-import dominio.Categoria;
-import dominio.Risorsa;
-import dominio.SottoCategoria;
-import logica.AnagraficaFruitori;
-import logica.AnagraficaOperatori;
-import logica.Archivio;
-import logica.ArchivioPrestiti;
-import logica.ArchivioStorico;
-import logica.Fruitore;
-import logica.Operatore;
-import logica.Utente;
-import utility.Costanti;
-import utility.InputDati;
+import dominio.parte2.punto3.Categoria;
+import dominio.parte2.punto3.Risorsa;
+import dominio.parte2.punto3.SottoCategoria;
+import logica.parte2.punto3.AnagraficaFruitori;
+import logica.parte2.punto3.AnagraficaOperatori;
+import logica.parte2.punto3.Archivio;
+import logica.parte2.punto3.ArchivioPrestiti;
+import logica.parte2.punto3.ArchivioStorico;
+import logica.parte2.punto3.Fruitore;
+import logica.parte2.punto3.Operatore;
+import logica.parte2.punto3.Utente;
+import utility_2.Costanti;
+import utility_2.InputDati;
 
 public class ProcessOperatoreHandler extends ProcessHandler implements Serializable
 {

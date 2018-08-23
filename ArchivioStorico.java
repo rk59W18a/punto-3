@@ -1,11 +1,11 @@
-package logica;
+package logica.parte2.punto3;
 
 import java.io.Serializable;
 
 import java.util.ArrayList;
 
-import dominio.*;
-import utility.Costanti;
+import dominio.parte2.punto3.*;
+import utility_2.Costanti;
 
 
 public class ArchivioStorico implements Serializable

@@ -1,10 +1,10 @@
-package logica;
+package logica.parte2.punto3;
 
 import java.io.Serializable;
 
 import java.util.ArrayList;
 
-import dominio.*;
+import dominio.parte2.punto3.*;
 
 public class Utente implements Serializable
 {

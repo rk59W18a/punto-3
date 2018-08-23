@@ -1,11 +1,11 @@
-package logica;
+package logica.parte2.punto3;
 
 import java.io.Serializable;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-import dominio.*;
+import dominio.parte2.punto3.*;
 
 
 public class ArchivioPrestiti implements Serializable

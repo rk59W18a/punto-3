@@ -1,4 +1,4 @@
-package logica;
+package logica.parte2.punto3;
 
 import java.io.Serializable;
 
