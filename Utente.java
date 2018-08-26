@@ -15,7 +15,6 @@ public class Utente implements Serializable
     private String username;
     private String password;
     
-    
     public Utente(String n, String c, String u, String p)
     {
     	this.nome = n;
@@ -43,18 +42,12 @@ public class Utente implements Serializable
     {
     	 return password; 
     }
-    
-    /**
-     * @pre: (c != null) && (r != null)
-     */
+   
     public ArrayList <Risorsa> ricercaRisorsa(Categoria c, Ricerca r)
     {
        	 return c.ricercaRisorsa(r);
     }
-    
-    /**
-     * @pre: (ap != null) && (r != null)
-     */
+   
     public boolean valutazioneDisponibilita(ArchivioPrestiti ap, Risorsa r)
     {
          return	ap.controlloDisponibilitaRisorsa(r);

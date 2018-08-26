@@ -3,9 +3,6 @@ package dominio.parte2.punto3;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-/**
- * @invariant: (elencoRisorse == null) || (elencoSottoCategorie == null)
- */
 public class Categoria implements Serializable
 {
 	   private static final long serialVersionUID = 1L;
@@ -23,8 +20,7 @@ public class Categoria implements Serializable
 	   public static final String DESCRIZIONE_CATEGORIA_COMPOSTA = "Nome categoria: %s\nSottocategorie in essa contenute:\n";
 	   public static final String ELENCO_SOTTOCATEGORIE_VUOTO = "\tAl momento non sono presenti sottocategorie\n";
 	   public static final String ELENCO_RISORSE_VUOTO = "\t\tAl momento non sono presenti risorse\n";
-
-	   
+   
 	   public Categoria(String n, int numPres, int numMaxPro, int numRiPro, int numRis)
 	   {
 		   this.nomeCategoria = n;
@@ -39,17 +35,11 @@ public class Categoria implements Serializable
 		   
 	   }
 	   
-	   /**
-	    * @post: elencoRisorse != null
-	    */
 	   public void inizializzaElencoRisorse()
 	   {
 		   elencoRisorse = new ArrayList <Risorsa> ();
 	   }
 	   
-	   /**
-	    * @post: elencoSottoCategorie != null
-	    */
 	   public void inizializzaElencoSottoCategorie()
 	   {
 		   elencoSottoCategorie = new ArrayList <SottoCategoria> ();
@@ -89,10 +79,7 @@ public class Categoria implements Serializable
 	   {
 		   return elencoSottoCategorie;
 	   }
-	   
-	   /**
-	    * @pre: elencoRisorse != null
-	    */
+	  
 	   public Risorsa getRisorsa(String t)
 	   {
 		   for(int i = 0; i < elencoRisorse.size(); i++)
@@ -104,41 +91,23 @@ public class Categoria implements Serializable
 		   
 		   return null;
 	   }
-	    
-	   /**
-	    * @pre: (r != null) && !(elencoRisorse.contains(r))
-	    * @post: elencoRisorse.contains(r)
-	    */
+	  
 	   public void aggiungiRisorsa(Risorsa r)  
 	   {
 		   elencoRisorse.add(r);
 	   }
-	   
-	   /**
-	    * @pre: (r != null) && (elencoRisorse.contains(r))
-	    * @post: !(elencoRisorse.contains(r))
-	    */
+	 
 	   public void rimuoviRisorsa(Risorsa r)  
 	   {
 		   elencoRisorse.remove(r);
 		   
 	   }
-	   
-	   /**
-	    * @pre: sc != null
-	    * @post: elencoSottoCategorie.contains(sc)
-	    */
+	  
 	   public void aggiungiSottoCategoria(SottoCategoria sc)
 	   {
 		   elencoSottoCategorie.add(sc);
 	   }
 	   
-	   /**
-	    * Metodo che dato una stringa t che rappresenta il titolo della nuova risorsa da inserire in archivio, verifica 
-	    * se all'interno della categoria associata alla nuova risorsa sia già presente una risorsa con lo stesso titolo
-	    * 
-	    * @pre: elencoSottoCategorie != null  && elencoRisorse != null
-	    */
 	   public boolean verificaPresenza(String t)
 	   {
 		  boolean presente = false;
@@ -161,9 +130,6 @@ public class Categoria implements Serializable
 		   return presente;
 	   }
 	 
-	   /**
-	    * @pre: ricerca != null
-	    */
 	   public ArrayList <Risorsa> ricercaRisorsa(Ricerca ricerca)
 	   {
 		   ArrayList <Risorsa> risorseCercate = new ArrayList <>();
@@ -183,44 +149,6 @@ public class Categoria implements Serializable
 		   
 		   return risorseCercate;
 	   }
-	   
-	   /*
-	  
-	   /**
-	    * @pre: elencoRisorse != null
-	  
-	   public String stampaElencoRisorse()
-	   {
-	      StringBuffer ris = new StringBuffer();
-	 	   
-	 	   for(int i = 0; i < elencoRisorse.size(); i++)
-	 	   {
-	 		   Risorsa r = elencoRisorse.get(i);
-	 		   ris.append(i+1 + ")"+ r.getTitolo() + "\n");
-	 	   }
-	 	   
-	 	   return ris.toString();
-	   }
-	   */
-	   
-	   /*
-	   /**
-	    * @pre: elencoSottoCategorie != null
-	  
-	   public String stampaElencoSottocategorie()
-	   {
-		   StringBuffer ris = new StringBuffer();
-		   
-		   for(int i = 0; i < elencoSottoCategorie.size(); i++)
-		   {
-			   SottoCategoria sc = elencoSottoCategorie.get(i);
-			   ris.append(i+1 + ")" + sc.getNome() + "\n");
-		   }
-		   
-		   return ris.toString();
-	   }
-	   */
-	   
 	   
 	   public String toString()
 	   {
@@ -258,6 +186,5 @@ public class Categoria implements Serializable
 		    }
 		   
 		   return ris.toString();
-	   }
-	   
+	   }   
 }

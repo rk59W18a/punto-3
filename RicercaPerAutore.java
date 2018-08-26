@@ -25,5 +25,4 @@ public class RicercaPerAutore implements Ricerca
 	   	    	                    
 	   	 return risorseCercate;
 	}
-
 }

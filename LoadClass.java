@@ -7,7 +7,6 @@ import utility_2.*;
 
 public class LoadClass 
 {
-	
 	 private File gestoreRisorse = new File(Costanti.NOME_FILE);
 	    
 	 private RaccoltaDati rd = null;
@@ -17,7 +16,6 @@ public class LoadClass
 	 private ArchivioPrestiti ap = null;
 	 private ArchivioStorico as = null;
 	 
-		
 	 public void inizializza() 
 	 {
 		boolean caricamentoRiuscito = false;
@@ -97,5 +95,4 @@ public class LoadClass
       rd = new RaccoltaDati(af, ao, arc, ap, as);
 	  ServizioFile.salvaSingoloOggetto(gestoreRisorse, rd);
     } 
-	
 }

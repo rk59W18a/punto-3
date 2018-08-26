@@ -25,5 +25,4 @@ public class RicercaPerGenere implements Ricerca
 	   	    	                    
 	   	 return risorseCercate;
 	}
-	
 }

@@ -25,5 +25,4 @@ public class RicercaPerTitolo implements Ricerca
 	   	    	                    
 	   	 return risorseCercate;
 	}
-
 }
