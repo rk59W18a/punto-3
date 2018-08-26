@@ -9,12 +9,12 @@ public class LoadClass
 {
 	 private File gestoreRisorse = new File(Costanti.NOME_FILE);
 	    
-	 private RaccoltaDati rd = null;
-	 private AnagraficaFruitori af = null;
-	 private AnagraficaOperatori ao = null;
-	 private Archivio arc = null;
-	 private ArchivioPrestiti ap = null;
-	 private ArchivioStorico as = null;
+	 private RaccoltaDati rd;
+	 private AnagraficaFruitori af;
+	 private AnagraficaOperatori ao;
+	 private Archivio arc;
+	 private ArchivioPrestiti ap;
+	 private ArchivioStorico as;
 	 
 	 public void inizializza() 
 	 {
