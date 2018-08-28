@@ -1,4 +1,4 @@
-package dominio.parte2.punto3.prima;
+package dominio.parte2.punto2;
 
 import java.io.Serializable;
 

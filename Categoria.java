@@ -1,28 +1,25 @@
-package dominio;
+package dominio.parte2.punto2;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
-/**
- * @invariant: (elencoRisorse == null) || (elencoSottoCategorie == null)
- */
 public class Categoria implements Serializable
 {
-	   //private static final long serialVersionUID = 1L;
+	   private static final long serialVersionUID = 1L;
 	   
-	   //private String nomeCategoria;
+	   private String nomeCategoria;
 	   protected ArrayList <Risorsa> elencoRisorse;
-	   //private ArrayList <SottoCategoria> elencoSottoCategorie;
+	   private ArrayList <SottoCategoria> elencoSottoCategorie;
 	   
-	   //private int numeroMaxGiorniPrestito;
-	   //private int numeroMaxGiorniProroga;
-	   //private int numeroGiorniRichiestaProroga;
-	   //private int numeroMaxRisorseInPrestito;
+	   private int numeroMaxGiorniPrestito;
+	   private int numeroMaxGiorniProroga;
+	   private int numeroGiorniRichiestaProroga;
+	   private int numeroMaxRisorseInPrestito;
 
-	   //public static final String DESCRIZIONE_CATEGORIA_SEMPLICE = "Nome categoria: %s\nRisorse in essa contenute:\n";
-	   //public static final String DESCRIZIONE_CATEGORIA_COMPOSTA = "Nome categoria: %s\nSottocategorie in essa contenute:\n";
-	   //public static final String ELENCO_SOTTOCATEGORIE_VUOTO = "\tAl momento non sono presenti sottocategorie\n";
-	   //public static final String ELENCO_RISORSE_VUOTO = "\t\tAl momento non sono presenti risorse\n";
+	   public static final String DESCRIZIONE_CATEGORIA_SEMPLICE = "Nome categoria: %s\nRisorse in essa contenute:\n";
+	   public static final String DESCRIZIONE_CATEGORIA_COMPOSTA = "Nome categoria: %s\nSottocategorie in essa contenute:\n";
+	   public static final String ELENCO_SOTTOCATEGORIE_VUOTO = "\tAl momento non sono presenti sottocategorie\n";
+	   public static final String ELENCO_RISORSE_VUOTO = "\t\tAl momento non sono presenti risorse\n";
 
 	   public static final String RIC_PER_TITOLO = "titolo";
 	   public static final String RIC_PER_AUTORE_I = "autore_i";
@@ -32,7 +29,7 @@ public class Categoria implements Serializable
 	   public static final String RIC_PER_REGISTA = "regista";
 	   public static final String RIC_PER_ATTORE_I = "attore_i";
 	 
-	   /*
+	   
 	   public Categoria(String n, int numPres, int numMaxPro, int numRiPro, int numRis)
 	   {
 		   this.nomeCategoria = n;
@@ -141,7 +138,7 @@ public class Categoria implements Serializable
 		   }
 		   return presente;
 	   }
-	   */
+	   
 	   
 	   public ArrayList <Risorsa> ricercaRisorsaInElenco(Object o, String cr)
 	   {
@@ -232,7 +229,7 @@ public class Categoria implements Serializable
 		   return ris.toString();
 	   }
 	   
-	   /*
+	   
 	   public String toString()
 	   {
 		   StringBuffer ris = new StringBuffer();
@@ -269,7 +266,5 @@ public class Categoria implements Serializable
 		    }
 		   
 		   return ris.toString();
-	   }
-	   */
-	   
+	   }	   
 }
