@@ -1,60 +1,41 @@
-package dominio;
+package dominio.parte2.punto3;
 
 import java.io.Serializable;
+
 import java.util.ArrayList;
 
-public class Categoria implements Serializable
+/*
+ * La classe Categoria estende la classe astratta Contenitore nel
+ * rispetto del principio di Liskov.
+ */
+public class Categoria extends Contenitore implements Serializable
 {
-	   //private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 	   
-	   //private String nomeCategoria;
-	  
-	   //L'attributo elencoRisorse è stato reso private nel rispetto di OCP.
-	   //Nella sottoclasse SottoCategoria viene utilizzato il getter per accedere
-	   //a questo attributo.
-	   private ArrayList <Risorsa> elencoRisorse;
-	  
-	   // private ArrayList <SottoCategoria> elencoSottoCategorie;
+	   private ArrayList <SottoCategoria> elencoSottoCategorie;
 	   
-	   //private int numeroMaxGiorniPrestito;
-	   //private int numeroMaxGiorniProroga;
-	   //private int numeroGiorniRichiestaProroga;
-	   //private int numeroMaxRisorseInPrestito;
+	   private int numeroMaxGiorniPrestito;
+	   private int numeroMaxGiorniProroga;
+	   private int numeroGiorniRichiestaProroga;
+	   private int numeroMaxRisorseInPrestito;
 
-	   //public static final String DESCRIZIONE_CATEGORIA_SEMPLICE = "Nome categoria: %s\nRisorse in essa contenute:\n";
-	   //public static final String DESCRIZIONE_CATEGORIA_COMPOSTA = "Nome categoria: %s\nSottocategorie in essa contenute:\n";
-	   //public static final String ELENCO_SOTTOCATEGORIE_VUOTO = "\tAl momento non sono presenti sottocategorie\n";
-	   //public static final String ELENCO_RISORSE_VUOTO = "\t\tAl momento non sono presenti risorse\n";
-
+	   public static final String DESCRIZIONE_CATEGORIA_SEMPLICE = "Nome categoria: %s\nRisorse in essa contenute:\n";
+	   public static final String DESCRIZIONE_CATEGORIA_COMPOSTA = "Nome categoria: %s\nSottocategorie in essa contenute:\n";
+	   public static final String ELENCO_SOTTOCATEGORIE_VUOTO = "\tAl momento non sono presenti sottocategorie\n";
+	   public static final String ELENCO_RISORSE_VUOTO = "\t\tAl momento non sono presenti risorse\n";
 	   
-	   /*
 	   public Categoria(String n, int numPres, int numMaxPro, int numRiPro, int numRis)
 	   {
-		   this.nomeCategoria = n;
+		   super(n);
 		   this.numeroMaxGiorniPrestito = numPres;
 		   this.numeroMaxGiorniProroga = numMaxPro;
 		   this.numeroGiorniRichiestaProroga = numRiPro;
 		   this.numeroMaxRisorseInPrestito = numRis;
 	   }
-	   
-	   public Categoria()
-	   {
-		   
-	   }
-	   
-	   public void inizializzaElencoRisorse()
-	   {
-		   elencoRisorse = new ArrayList <Risorsa> ();
-	   }
-	   
+	  	   
 	   public void inizializzaElencoSottoCategorie()
 	   {
 		   elencoSottoCategorie = new ArrayList <SottoCategoria> ();
-	   }
-	   
-	   public String getNome()
-	   {
-		   return nomeCategoria;
 	   }
 	   
 	   public int getNumeroMaxGiorniPrestito()
@@ -76,45 +57,17 @@ public class Categoria implements Serializable
 	   {
 		   return numeroMaxRisorseInPrestito;
 	   }
-	     
-	   public ArrayList <Risorsa> getElencoRisorse()  
-	   {
-		   return elencoRisorse;
-	   }
-	   
+	 
 	   public ArrayList <SottoCategoria> getElencoSottoCategorie() 
 	   {
 		   return elencoSottoCategorie;
 	   }
-	   
-	   public Risorsa getRisorsa(String t)
-	   {
-		   for(int i = 0; i < elencoRisorse.size(); i++)
-		   {
-			   Risorsa r = elencoRisorse.get(i);
-			   if(r.getTitolo().equalsIgnoreCase(t))
-				   return r;
-		   }
-		   
-		   return null;
-	   }
-	    
-	   public void aggiungiRisorsa(Risorsa r)  
-	   {
-		   elencoRisorse.add(r);
-	   }
-	  
-	   public void rimuoviRisorsa(Risorsa r)  
-	   {
-		   elencoRisorse.remove(r);
-		   
-	   }
-	   
+	 
 	   public void aggiungiSottoCategoria(SottoCategoria sc)
 	   {
 		   elencoSottoCategorie.add(sc);
 	   }
-	   
+	  
 	   public boolean verificaPresenza(String t)
 	   {
 		  boolean presente = false;
@@ -136,8 +89,7 @@ public class Categoria implements Serializable
 		   }
 		   return presente;
 	   }
-	  */
-	   
+	 
 	   //Il metodo ricercaRisorsa è stato sistemato nel rispetto di OCP, ora si
 	   //appoggia all'interface Ricerca
 	   public ArrayList <Risorsa> ricercaRisorsa(Ricerca ricerca)
@@ -146,7 +98,7 @@ public class Categoria implements Serializable
 		   
 		   if(elencoSottoCategorie == null)
 		   { 
-			   risorseCercate = ricerca.ricercaRisorsa(elencoRisorse);
+			   risorseCercate = ricerca.ricercaRisorsa(getElencoRisorse());
 		   }
 		   else
 		   {
@@ -160,30 +112,28 @@ public class Categoria implements Serializable
 		   return risorseCercate;
 	   }
 	   
-	   
-	   /*
 	   public String toString()
 	   {
 		   StringBuffer ris = new StringBuffer();
 		   
 		   if(elencoSottoCategorie == null)
 		   {
-		       ris.append(String.format(DESCRIZIONE_CATEGORIA_SEMPLICE, nomeCategoria));
+		       ris.append(String.format(DESCRIZIONE_CATEGORIA_SEMPLICE, getNome()));
 		   
-		       if(elencoRisorse.size() == 0)
+		       if(getElencoRisorse().size() == 0)
 		    	       ris.append(ELENCO_RISORSE_VUOTO);
 		       else
 		       {
-		          for(int i = 0; i < elencoRisorse.size(); i++)
+		          for(int i = 0; i < getElencoRisorse().size(); i++)
 		          {
-			         Risorsa r = elencoRisorse.get(i);
+			         Risorsa r = getElencoRisorse().get(i);
 			         ris.append("\t\t" + (i+1) + ")"+ r.toString());
 		          }
 		       }
 		   }
 		   else
 		   {
-			   ris.append(String.format(DESCRIZIONE_CATEGORIA_COMPOSTA, nomeCategoria));
+			   ris.append(String.format(DESCRIZIONE_CATEGORIA_COMPOSTA, getNome()));
 			   
 			   if(elencoSottoCategorie.size() == 0)
 				    ris.append(ELENCO_SOTTOCATEGORIE_VUOTO);
@@ -198,8 +148,5 @@ public class Categoria implements Serializable
 		    }
 		   
 		   return ris.toString();
-	   }
-	   
-	   */
-	   
+	   }	   
 }

@@ -1,27 +1,26 @@
-package interazione;
+package interazione.parte2.punto3;
 
 import java.io.Serializable;
 
 
 import java.util.ArrayList;
 
-import dominio.Categoria;
-import dominio.Ricerca;
-import dominio.RicercaPerAnnoPubblicazione;
-import dominio.RicercaPerAttore;
-import dominio.RicercaPerAutore;
-import dominio.RicercaPerCasaEditrice;
-import dominio.RicercaPerGenere;
-import dominio.RicercaPerRegista;
-import dominio.RicercaPerTitolo;
-import dominio.Risorsa;
-import dominio.SottoCategoria;
-import logica.Archivio;
-import logica.ArchivioPrestiti;
-
-import logica.Utente;
-import utility.Costanti;
-import utility.InputDati;
+import dominio.parte2.punto3.Categoria;
+import dominio.parte2.punto3.Ricerca;
+import dominio.parte2.punto3.RicercaPerAnnoPubblicazione;
+import dominio.parte2.punto3.RicercaPerAttore;
+import dominio.parte2.punto3.RicercaPerAutore;
+import dominio.parte2.punto3.RicercaPerCasaEditrice;
+import dominio.parte2.punto3.RicercaPerGenere;
+import dominio.parte2.punto3.RicercaPerRegista;
+import dominio.parte2.punto3.RicercaPerTitolo;
+import dominio.parte2.punto3.Risorsa;
+import dominio.parte2.punto3.SottoCategoria;
+import logica.parte2.punto3.Archivio;
+import logica.parte2.punto3.ArchivioPrestiti;
+import logica.parte2.punto3.Utente;
+import utility_2.Costanti;
+import utility_2.InputDati;
 
 public abstract class ProcessHandler implements Serializable
 {  
