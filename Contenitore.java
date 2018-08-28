@@ -9,12 +9,12 @@ import java.util.ArrayList;
  */
 public abstract class Contenitore 
 {
-	 private String nomeCategoria;
+	 private String nome;
 	 private ArrayList <Risorsa> elencoRisorse;
 	 
 	 public Contenitore(String n)
 	 {
-		 this.nomeCategoria = n;
+		 this.nome = n;
 	 }
 	 
 	 public void inizializzaElencoRisorse()
@@ -24,7 +24,7 @@ public abstract class Contenitore
 	 
 	 public String getNome()
 	 {
-		   return nomeCategoria;
+		   return nome;
 	 }
 	 
 	 public ArrayList <Risorsa> getElencoRisorse()  
