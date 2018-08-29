@@ -43,7 +43,7 @@ public class Utente implements Serializable
     	 return password; 
     }
    
-    public ArrayList <Risorsa> ricercaRisorsa(Categoria c, Ricerca r)
+    public ArrayList <Risorsa> ricercaRisorsa(Contenitore c, Ricerca r)
     {
        	 return c.ricercaRisorsa(r);
     }
