@@ -1,9 +1,12 @@
 package dominio.parte2.punto3;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class RicercaPerAttore implements Ricerca
+public class RicercaPerAttore implements Ricerca, Serializable
 {
+	private static final long serialVersionUID = 1L;
+	
 	private String s;
 	
 	public RicercaPerAttore(String s)
