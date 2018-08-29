@@ -1,11 +1,9 @@
 package interazione.parte2.punto3;
 
 import java.io.Serializable;
-
-
 import java.util.ArrayList;
-
 import dominio.parte2.punto3.Categoria;
+import dominio.parte2.punto3.Contenitore;
 import dominio.parte2.punto3.Ricerca;
 import dominio.parte2.punto3.RicercaPerAnnoPubblicazione;
 import dominio.parte2.punto3.RicercaPerAttore;
@@ -16,11 +14,8 @@ import dominio.parte2.punto3.RicercaPerRegista;
 import dominio.parte2.punto3.RicercaPerTitolo;
 import dominio.parte2.punto3.Risorsa;
 import dominio.parte2.punto3.SottoCategoria;
-import logica.parte2.punto3.Archivio;
-import logica.parte2.punto3.ArchivioPrestiti;
-import logica.parte2.punto3.Utente;
-import utility_2.Costanti;
-import utility_2.InputDati;
+import utility.parte2.Costanti;
+import utility.parte2.InputDati;
 
 public abstract class ProcessHandler implements Serializable
 {  
@@ -73,7 +68,7 @@ public abstract class ProcessHandler implements Serializable
     
     //Metodo modificato in seguito alle modifiche fatte sul metodo ricercaRisorsa in Categoria
     //e all'introduzione dell'interface Ricerca e delle classi che la implementano.
-    public ArrayList <Risorsa> ricercaRisorsaLibri(Utente ut, Categoria c)
+    public ArrayList <Risorsa> ricercaRisorsaLibri(Utente ut, Contenitore c)
     {
    	    int numScelta = InputDati.leggiIntero(Costanti.AVVIO_RICERCA_LIBRI, Costanti.NUM_MINIMO, Costanti.NUM_MASSIMO_RICERCA);
    	    String s = "";
@@ -107,7 +102,7 @@ public abstract class ProcessHandler implements Serializable
    
     //Metodo modificato in seguito alle modifiche fatte su ricercaRisorsa in Categoria
     //e all'introduzione dell'interface Ricerca e delle classi che la implementano.
-    public ArrayList <Risorsa> ricercaRisorsaFilm(Utente ut, Categoria c)
+    public ArrayList <Risorsa> ricercaRisorsaFilm(Utente ut, Contenitore c)
     {
    	    int numScelta = InputDati.leggiIntero(Costanti.AVVIO_RICERCA_FILM, Costanti.NUM_MINIMO, Costanti.NUM_MASSIMO_RICERCA);
    	    String s = "";

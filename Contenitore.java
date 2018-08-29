@@ -1,5 +1,6 @@
 package dominio.parte2.punto3;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /*
@@ -7,10 +8,12 @@ import java.util.ArrayList;
  * comuni alle due sottoclassi Categoria e SottoCategoria, nel rispetto 
  * del principio di Liskov.
  */
-public abstract class Contenitore 
+public abstract class Contenitore implements Serializable
 {
-	 private String nome;
-	 private ArrayList <Risorsa> elencoRisorse;
+	private static final long serialVersionUID = 1L;
+	
+	private String nome;
+	private ArrayList <Risorsa> elencoRisorse;
 	 
 	 public Contenitore(String n)
 	 {
