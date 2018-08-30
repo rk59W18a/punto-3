@@ -15,8 +15,8 @@ import logica.parte2.punto3.ArchivioStorico;
 import logica.parte2.punto3.Fruitore;
 import logica.parte2.punto3.Operatore;
 import logica.parte2.punto3.Utente;
-import utility_2.Costanti;
-import utility_2.InputDati;
+import utility.parte2.Costanti;
+import utility.parte2.InputDati;
 
 public class ProcessOperatoreHandler extends ProcessHandler implements Serializable
 {
@@ -94,7 +94,7 @@ public class ProcessOperatoreHandler extends ProcessHandler implements Serializa
  	           }
  		       else if((c.getNome()).equalsIgnoreCase(Costanti.FILM))
  		       {
-		    	  nuovar = InserimentoRisorsa.inserisciFilm();
+		    	        nuovar = InserimentoRisorsa.inserisciFilm();
 		       }
  		     
  		       if(nuovar != null)

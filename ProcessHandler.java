@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import dominio.parte2.punto3.Categoria;
-import dominio.parte2.punto3.ICategoria;
+import dominio.parte2.punto3.Contenitore;
 import dominio.parte2.punto3.Ricerca;
 import dominio.parte2.punto3.RicercaPerAnnoPubblicazione;
 import dominio.parte2.punto3.RicercaPerAttore;
@@ -20,8 +20,8 @@ import dominio.parte2.punto3.SottoCategoria;
 import logica.parte2.punto3.Archivio;
 import logica.parte2.punto3.ArchivioPrestiti;
 import logica.parte2.punto3.Utente;
-import utility_2.Costanti;
-import utility_2.InputDati;
+import utility.parte2.Costanti;
+import utility.parte2.InputDati;
 
 public abstract class ProcessHandler implements Serializable
 {  
@@ -65,7 +65,7 @@ public abstract class ProcessHandler implements Serializable
    	 		return null;
     }
     
-    public ArrayList <Risorsa> ricercaRisorsaLibri(Utente ut, Categoria c)
+    public ArrayList <Risorsa> ricercaRisorsaLibri(Utente ut, Contenitore c)
     {
    	    int numScelta = InputDati.leggiIntero(Costanti.AVVIO_RICERCA_LIBRI, Costanti.NUM_MINIMO, Costanti.NUM_MASSIMO_RICERCA);
    	    String s = "";
@@ -97,7 +97,7 @@ public abstract class ProcessHandler implements Serializable
    	    return ut.ricercaRisorsa(c,r);
     }
    
-    public ArrayList <Risorsa> ricercaRisorsaFilm(Utente ut, Categoria c)
+    public ArrayList <Risorsa> ricercaRisorsaFilm(Utente ut, Contenitore c)
     {
    	    int numScelta = InputDati.leggiIntero(Costanti.AVVIO_RICERCA_FILM, Costanti.NUM_MINIMO, Costanti.NUM_MASSIMO_RICERCA);
    	    String s = "";
@@ -176,7 +176,7 @@ public abstract class ProcessHandler implements Serializable
 		return ris.toString();
    }
    
-   public String stampaElencoRisorse(ICategoria c)
+   public String stampaElencoRisorse(Contenitore c)
    {
       StringBuffer ris = new StringBuffer();
  	   
