@@ -1,10 +1,7 @@
 package interazione.parte2.punto3;
 
 import java.io.Serializable;
-
-
 import java.util.ArrayList;
-
 import dominio.parte2.punto3.Categoria;
 import dominio.parte2.punto3.Contenitore;
 import dominio.parte2.punto3.Ricerca;
@@ -17,8 +14,10 @@ import dominio.parte2.punto3.RicercaPerRegista;
 import dominio.parte2.punto3.RicercaPerTitolo;
 import dominio.parte2.punto3.Risorsa;
 import dominio.parte2.punto3.SottoCategoria;
+import logica.parte2.punto3.AnagraficaFruitori;
 import logica.parte2.punto3.Archivio;
 import logica.parte2.punto3.ArchivioPrestiti;
+import logica.parte2.punto3.ArchivioStorico;
 import logica.parte2.punto3.Utente;
 import utility.parte2.Costanti;
 import utility.parte2.InputDati;
@@ -29,11 +28,15 @@ public abstract class ProcessHandler implements Serializable
 	
 	private Archivio arc;
     private ArchivioPrestiti ap;
+    private AnagraficaFruitori af;
+    private ArchivioStorico as;
     
-    public ProcessHandler(Archivio arc, ArchivioPrestiti ap)
+    public ProcessHandler(Archivio arc, ArchivioPrestiti ap, AnagraficaFruitori af, ArchivioStorico as)
     {  
     	this.arc = arc;
     	this.ap = ap;
+    	this.af = af;
+    	this.as = as;
     }
     
     public Archivio getArchivio()
@@ -44,6 +47,16 @@ public abstract class ProcessHandler implements Serializable
     public ArchivioPrestiti getArchivioPrestiti()
     {
     	return ap;
+    }
+    
+    public AnagraficaFruitori getAnagraficaFruitori()
+    {
+    	return af;
+    }
+    
+    public ArchivioStorico getArchivioStorico()
+    {
+    	return as;
     }
 
     public abstract Utente accesso();
