@@ -14,6 +14,8 @@ import dominio.parte2.punto3.RicercaPerRegista;
 import dominio.parte2.punto3.RicercaPerTitolo;
 import dominio.parte2.punto3.Risorsa;
 import dominio.parte2.punto3.SottoCategoria;
+import logica.parte2.punto3.AnagraficaFruitori;
+import logica.parte2.punto3.ArchivioStorico;
 import utility.parte2.Costanti;
 import utility.parte2.InputDati;
 
@@ -22,18 +24,22 @@ public abstract class ProcessHandler implements Serializable
 	//private static final long serialVersionUID = 1L;
 	
 	//Gli attributi arc e ap sono stati resi private nel rispetto di OCP.
+	//Gli attributi af e as sono stati spostati dalle sottoclassi alla superclasse
+	//in quanto comuni ad entrambi e sono stati resi private nel rispetto di OCP.
 	//Nelle sottoclassi ProcessFruitoreHandler e ProcessOperatoreHandler vengono
 	//utilizzati i getter per accedere a questi attributi.
 	private Archivio arc;
     private ArchivioPrestiti ap;
+    private AnagraficaFruitori af;
+    private ArchivioStorico as;
     
-   /*
     public ProcessHandler(Archivio arc, ArchivioPrestiti ap)
     {  
     	this.arc = arc;
     	this.ap = ap;
+    	this.af = af;
+    	this.as = as;
     }
-    */
     
     public Archivio getArchivio()
     {
@@ -43,6 +49,16 @@ public abstract class ProcessHandler implements Serializable
     public ArchivioPrestiti getArchivioPrestiti()
     {
     	return ap;
+    }
+    
+    public AnagraficaFruitori getAnagraficaFruitori()
+    {
+    	return af;
+    }
+    
+    public ArchivioStorico getArchivioStorico()
+    {
+    	return as;
     }
 
     /*
