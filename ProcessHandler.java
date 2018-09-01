@@ -182,9 +182,10 @@ public abstract class ProcessHandler implements Serializable
    }
    */
    
-   /*
+   //Ridenominazione del metodo
    public String stampaRisorseDaRicerca(ArrayList <Risorsa> elencoRisorse)
    {
+	   /*
   	    StringBuffer ris = new StringBuffer();
   	    ris.append(Costanti.INTESTAZIONE_RICERCA_RISORSE);
   	    
@@ -198,10 +199,10 @@ public abstract class ProcessHandler implements Serializable
 		}
 		
 		return ris.toString();
+		*/
    }
-   */
    
-   //Metodo spostato da Categoria in quanto serve a livello di ProcessHanler, nel
+   //Metodo spostato da Categoria in quanto serve a livello di ProcessHandler, nel
    //rispetto di SRP
    public String stampaElencoRisorse(Categoria c)
    {
@@ -216,7 +217,22 @@ public abstract class ProcessHandler implements Serializable
  	   return ris.toString();
    }
    
-   //Metodo spostato da Categoria in quanto serve a livello di ProcessHanler, nel
+   //Metodo spostato da Archivio in quanto serve a livello di ProcessHandler, nel
+   //rispetto di SRP
+   public String stampaElencoCategorie()
+	{
+		StringBuffer ris = new StringBuffer();
+		   
+		for(int i = 0; i < arc.getElencoCategorie().size(); i++)
+		{
+			   Categoria c = arc.getElencoCategorie().get(i);
+			   ris.append(i+1 + ")" + c.getNome() + "\n");
+		}
+		   
+	    return ris.toString();
+	}
+   
+   //Metodo spostato da Categoria in quanto serve a livello di ProcessHandler, nel
    //rispetto di SRP
    public String stampaElencoSottocategorie(Categoria c)
    {
