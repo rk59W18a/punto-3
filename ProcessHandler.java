@@ -108,9 +108,10 @@ public abstract class ProcessHandler implements Serializable
    	    return ut.ricercaRisorsa(c, o, s);
     }
     
-   /*
+   
    public String ricercaRisorsaFormatoStringa(ArrayList <Risorsa> elencoRisorse)
    {
+	   /*
   	    StringBuffer ris = new StringBuffer();
   	    ris.append(Costanti.INTESTAZIONE_RICERCA_RISORSE);
   	    
@@ -124,8 +125,10 @@ public abstract class ProcessHandler implements Serializable
 		}
 		
 		return ris.toString();
+		*/
    }
    
+   /*
    public String valutazioneDisponibilita(Utente ut)
    {
      	ArrayList <Risorsa> risorseTrovate = ricercaRisorsa(ut);
@@ -155,6 +158,5 @@ public abstract class ProcessHandler implements Serializable
       	else
     		     return false;
    }
-   */
-    
+   */  
 }
