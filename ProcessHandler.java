@@ -1,10 +1,7 @@
 package interazione.parte2.punto3;
 
 import java.io.Serializable;
-
-
 import java.util.ArrayList;
-
 import dominio.parte2.punto3.Categoria;
 import dominio.parte2.punto3.Contenitore;
 import dominio.parte2.punto3.Ricerca;
@@ -17,8 +14,10 @@ import dominio.parte2.punto3.RicercaPerRegista;
 import dominio.parte2.punto3.RicercaPerTitolo;
 import dominio.parte2.punto3.Risorsa;
 import dominio.parte2.punto3.SottoCategoria;
+import logica.parte2.punto3.AnagraficaFruitori;
 import logica.parte2.punto3.Archivio;
 import logica.parte2.punto3.ArchivioPrestiti;
+import logica.parte2.punto3.ArchivioStorico;
 import logica.parte2.punto3.Utente;
 import utility.parte2.Costanti;
 import utility.parte2.InputDati;
@@ -29,11 +28,15 @@ public abstract class ProcessHandler implements Serializable
 	
 	private Archivio arc;
     private ArchivioPrestiti ap;
+    private AnagraficaFruitori af;
+    private ArchivioStorico as;
     
-    public ProcessHandler(Archivio arc, ArchivioPrestiti ap)
+    public ProcessHandler(Archivio arc, ArchivioPrestiti ap, AnagraficaFruitori af, ArchivioStorico as)
     {  
     	this.arc = arc;
     	this.ap = ap;
+    	this.af = af;
+    	this.as = as;
     }
     
     public Archivio getArchivio()
@@ -45,6 +48,16 @@ public abstract class ProcessHandler implements Serializable
     {
     	return ap;
     }
+    
+    public AnagraficaFruitori getAnagraficaFruitori()
+    {
+    	return af;
+    }
+    
+    public ArchivioStorico getArchivioStorico()
+    {
+    	return as;
+    }
 
     public abstract Utente accesso();
   
@@ -52,7 +65,7 @@ public abstract class ProcessHandler implements Serializable
     {
        	Categoria c = null;
        	
-   	 	System.out.printf(Costanti.CONTENUTO_ARC, arc.stampaElencoCategorie());
+   	 	System.out.printf(Costanti.CONTENUTO_ARC, stampaElencoCategorie());
    	 	
    	    int num1 = InputDati.leggiIntero(Costanti.INS_NUMERO_CAT_RICERCA, Costanti.NUM_MINIMO, (arc.getElencoCategorie()).size());
    	    c = (arc.getElencoCategorie()).get(num1-Costanti.NUM_MINIMO);
@@ -188,6 +201,19 @@ public abstract class ProcessHandler implements Serializable
  	   
  	   return ris.toString();
    }
+   
+   public String stampaElencoCategorie()
+	{
+		StringBuffer ris = new StringBuffer();
+		   
+		for(int i = 0; i < arc.getElencoCategorie().size(); i++)
+		{
+			   Categoria c = arc.getElencoCategorie().get(i);
+			   ris.append(i+1 + ")" + c.getNome() + "\n");
+		}
+		   
+	    return ris.toString();
+	}
    
    public String stampaElencoSottocategorie(Categoria c)
    {

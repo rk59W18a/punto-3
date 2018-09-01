@@ -41,5 +41,5 @@ public class SottoCategoria extends Contenitore implements Serializable
  	   }
  	   
  	   return ris.toString();
-    }   
+    } 
 }
